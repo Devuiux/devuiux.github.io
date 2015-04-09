@@ -1,0 +1,36 @@
+/* -------------------------------- 
+
+Middle
+
+-------------------------------- */
+
+.middle {
+    border-bottom: 1px solid $border-color;
+    width: 90%;
+    @include MQ(XL) {
+        width: 100%;
+   }
+   h2 {
+        font-size: $middle-font-size;
+        margin-bottom: 0.5em;
+   }
+}
+/* -------------------------------- 
+
+Footer
+
+-------------------------------- */
+
+footer {
+    border-top: 1px solid $border-color;
+    background: $color-3;
+    padding: 1em 0 3em;
+    h3 {
+        font-size: $footer-font-size;
+    }
+    width: 90%;
+    
+    @include MQ(XL) {
+        width: 100%;
+    }
+}

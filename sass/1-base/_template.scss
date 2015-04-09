@@ -1,0 +1,96 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+*,
+*::after,
+*::before {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*::after,
+*::before {
+    content: '';
+}
+
+button::before, button::after {
+    content: none !important;
+}
+
+body {
+    font: {
+        family: $primary-font;
+    }
+    position: relative;
+    color: $color-1;
+    background-color: $color-3;
+    @include MQ(M) {
+       padding-left: 52px; 
+    }
+
+    &::after {
+        /* dark overlay layer - visible when we fire .cd-quick-view */
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($dark-gray, .8);
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+        -moz-transition: opacity .3s 0s, visibility 0s .3s;
+        transition: opacity .3s 0s, visibility 0s .3s;
+    }
+    @include MQ(L) {
+        &.overlay-layer::after {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+            -moz-transition: opacity .3s 0s, visibility 0s 0s;
+            transition: opacity .3s 0s, visibility 0s 0s;
+        }
+    }
+}
+
+header, .content, .presentation, .middle, footer {
+    @include outer-container;
+}
+
+html,
+body {
+    @include size(100%);
+    font-size: 1em;
+    line-height: 1.25;
+    @include MQ(M) {
+        line-height: 1.375;
+    }
+}
+
+.content {
+    position: relative;
+    width: 90%;
+    @include MQ(L) {
+        min-height: 400px;
+    }
+}
+
+.presentation {
+    padding-bottom: 25px;
+    a {
+        color: $color-3;
+    }
+    .cd-container {
+        width: 90%;
+        margin: 0 auto;
+        @include MQ(XL) {
+            max-width: $XL;
+            width: 100%;
+        }
+    }
+}

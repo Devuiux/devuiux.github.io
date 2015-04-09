@@ -1,0 +1,45 @@
+.work
+	.content
+		margin-bottom: 100px
+		.device
+			+display(flex)
+			margin-bottom: -75px
+		aside
+			font-size: $work-description-font-size
+
+	@media only screen and (min-width: 450px)
+		.content
+			.device
+				margin-bottom: auto
+
+			div
+				margin: 75px auto
+
+
+	@media only screen and (min-width: 890px)
+		.content
+
+			#svg
+				+size(110%)
+				background: transparent
+
+			.preview-left		
+				display: inline-block
+				section
+					float: left
+					width: 68.5%
+				aside
+					float: right
+					width: 28.5%
+					margin-left: 3%
+					
+			.preview-right	
+				display: inline-block
+				section
+					float: right
+					width: 68.5%
+					
+				aside
+					float: left
+					width: 28.5%
+					margin-right: 3%

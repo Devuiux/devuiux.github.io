@@ -1,0 +1,289 @@
+/* -------------------------------- 
+
+Form
+
+-------------------------------- */
+
+.cd-form {
+    width: 90%;
+    max-width: $M; // breakpoints inside partials > _layout.scss
+    margin: 4em auto;
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        margin: 24px 0;
+        font: {
+            size: 1rem;
+            family: $primary-font; // variables inside partials > _variables.scss
+        }
+    }
+    //legend {
+    //    padding-bottom: 10px;
+    //    margin-bottom: 20px;
+    //    font-size: 1.8rem;
+    //    border-bottom: 1px solid $light-gray;
+    //}
+    div {
+        /* form element wrapper */
+        
+        position: relative;
+        margin: 20px 0;
+    }
+    h4,
+    .cd-label {
+        font-size: 1.2rem;
+        color: $color-1;
+        margin-bottom: 10px;
+    }
+    .cd-label {
+        display: block;
+    }
+    input,
+    textarea,
+    select,
+    label {
+        font-family: $primary-font;
+        font-size: 1.2rem;
+        color: $color-1;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select,
+    legend {
+        display: block;
+        width: 100%;
+        @include appearance(none);
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        /* general style for input elements */
+        
+        padding: 10px;
+        border: 1px solid $border-color;
+        border-radius: 0.15em;
+        //box-shadow: $box-shadow;
+        &:focus {
+            outline: none;
+            border-color: $color-4;
+            background-color: $color-4;
+            box-shadow: $box-shadow;
+        }
+    }
+
+    #message {
+        &:focus {
+            background-color: $color-4;
+        }
+    }
+
+    .cd-select {
+        /* select element wapper */
+        
+        position: relative;
+        &::after {
+            /* arrow icon for select element */
+            
+            content: '';
+            position: absolute;
+            z-index: 1;
+            right: 16px;
+            top: 50%;
+            margin-top: -8px;
+            display: block;
+            width: 16px;
+            height: 16px;
+            background: url('../../images/form/cd-icon-arrow.svg') no-repeat center center;
+            pointer-events: none;
+        }
+    }
+    select {
+        box-shadow: $box-shadow;
+        cursor: pointer;
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    .cd-form-list {
+        margin-top: 16px;
+        @include clearfix;
+    }
+    .cd-form-list li {
+        /* wrapper for radio and checkbox input types */
+        
+        display: inline-block;
+        position: relative;
+        @include user-select(none);
+        margin: 0 26px 16px 0;
+        float: left;
+    }
+    //here was radio
+    textarea {
+        min-height: 200px;
+        resize: vertical;
+        overflow: auto;
+    }
+    input[type="submit"] {
+        /* button style */
+        
+        border: none;
+        background: $color-2;
+        border-radius: 0.15em;
+        padding: 8px 10px;
+        color: $color-4;
+        font-weight: 400;
+        float: right;
+        cursor: pointer;
+        @include font-smoothing;
+        @include appearance(none);
+        font-size: 1.1rem;
+        text-shadow: $text-shadow;
+        //x y blur color
+        //box-shadow: $box-shadow; 
+        .no-touch &:hover {
+            background: lighten($color-2, 5%);
+        }
+        &:focus {
+            outline: none;
+            background: $color-4;
+        }
+        &:active {
+            @include transform(scale(0.9));
+            box-shadow: none;
+        }
+    }
+    [required] {
+        background: url('../../images/form/cd-required.svg') no-repeat top right;
+    }
+    //.error-message p {
+    //    background: $color-2;
+    //    color: $color-4;
+    //    font-size: 1.2rem;
+    //    text-align: center;
+    //    @include font-smoothing;
+     //   //text-shadow: $text-shadow;
+    //    border-radius: 0.15em;
+    //    padding: 12px;
+    //}
+    //.error {
+    //    //border-color: $color-2 !important;
+    //}
+
+    .error-message {
+    	display: none;
+    }
+
+    @include MQ(M) {
+        div {
+            /* form element wrapper */
+            
+            margin: 32px 0;
+        }
+        legend + div {
+            /* reduce margin-top for first form element after the legend */
+            
+            margin-top: 20px;
+        }
+        h4,
+        .cd-label {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            padding: 12px;
+        }
+    }
+}
+
+@include keyframes(cd-bounce) {
+    0%, 100% {
+        @include transform(scale(1));
+    }
+    50% {
+        @include transform(scale(.8));
+    }
+}
+/* -------------------------------- 
+
+Custom icons
+
+-------------------------------- */
+
+.cd-form {
+    .icon input, .icon select, .icon textarea {
+        padding-left: 54px !important;
+    }
+    .user {
+        background: url('../../images/form/cd-icon-user.svg') no-repeat 16px center;
+    }
+    [required].user {
+        background: url('../../images/form/cd-icon-user.svg') no-repeat 16px center, url('../../images/form/cd-required.svg') no-repeat top right;
+    }
+    .company {
+        background: url('../../images/form/cd-icon-company.svg') no-repeat 16px center;
+    }
+    [required].company {
+        background: url('../../images/form/cd-icon-company.svg') no-repeat 16px center, url('../../images/form/cd-required.svg') no-repeat top right;
+    }
+    .email {
+        background: url('../../images/form/cd-icon-email.svg') no-repeat 16px center;
+    }
+    [required].email {
+        background: url('../../images/form/cd-icon-email.svg') no-repeat 16px center, url('../../images/form/cd-required.svg') no-repeat top right;
+    }
+    .budget {
+        background: url('../../images/form/cd-icon-budget.svg') no-repeat 16px center;
+    }
+    .message {
+        background: url('../../images/form/cd-icon-message.svg') no-repeat 16px 16px;
+    }
+    [required].message {
+        background: url('../../images/form/cd-icon-message.svg') no-repeat 16px 16px, url('../../images/form/cd-required.svg') no-repeat top right;
+    }
+}
+/* -------------------------------- 
+
+FLoating labels 
+
+-------------------------------- */
+
+.js .floating-labels {
+    div {
+        margin: 28px 0;
+    }
+    .cd-label {
+        @include position(absolute, 16px 16px auto auto);
+        //position: absolute;
+        //top: 16px;
+        //left: 16px;
+        font-size: 1.2rem;
+        cursor: text;
+        @include transition(top .2s, left .2s, font-size .2s);
+    }
+    .icon .cd-label {
+        left: 56px;
+    }
+    .cd-label.float {
+        /* move label out the input field */
+        
+        font-size: 1rem;
+        top: -20px;
+        left: 0 !important;
+    }
+    @include MQ(M) {
+        legend + div {
+            /* reduce margin-top for first form element after the legend */
+            
+            margin-top: 16px;
+        }
+        .cd-label {
+            top: 14px;
+        }
+    }
+}
