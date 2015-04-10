@@ -246,8 +246,9 @@ Menu
   position: fixed;
   bottom: 10px;
   left: 10px;
+  display: inline-block;
   padding: 9px 10px 7px 10px;
-  border-radius: 1px;
+  border-radius: 2.5px;
   z-index: 2;
   opacity: 0.7; }
   .sliding-menu-button:hover:not(:disabled) {
@@ -265,6 +266,11 @@ Menu
   .sliding-menu-button:disabled {
     opacity: 0.5;
     cursor: not-allowed; }
+  .sliding-menu-button svg {
+    height: 45px;
+    width: 45px; }
+    .sliding-menu-button svg g {
+      fill: #f0eee1; }
   @media only screen and (min-width: 600px) {
     .sliding-menu-button {
       position: fixed;
@@ -276,7 +282,12 @@ Menu
       height: 100%;
       border-right: 2px dashed #ABB7B7;
       padding: 0 10px;
-      cursor: pointer; } }
+      cursor: pointer; }
+      .sliding-menu-button svg {
+        height: 32px;
+        width: 32px; }
+        .sliding-menu-button svg g {
+          fill: #555555; } }
 
 /* -------------------------------- 
 
