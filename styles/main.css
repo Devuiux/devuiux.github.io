@@ -93,6 +93,18 @@ Primary style
 *::before {
   box-sizing: border-box; }
 
+/* applies to GIF and PNG images; avoids blurry edges */
+#svg, img[src$=".gif"], img[src$=".png"] {
+  image-rendering: -moz-crisp-edges;
+  /* Firefox */
+  image-rendering: -o-crisp-edges;
+  /* Opera */
+  image-rendering: -webkit-optimize-contrast;
+  /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  /* IE (non-standard property) */ }
+
 *::after,
 *::before {
   content: ''; }
@@ -1049,43 +1061,25 @@ footer {
       right: -12px;
       top: -1px; }
 
-.work .content {
-  margin-bottom: 100px; }
-  .work .content .device {
-    display: box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: flex;
-    margin-bottom: -100px; }
-  .work .content aside {
-    font-size: 85%; }
-  .work .content .tech-list li {
-    display: inline-block;
-    background: #F7F7F7;
-    border-radius: 4.5px;
-    border: 1px solid #E0E0E0;
-    text-transform: uppercase;
-    font-size: 1.2em;
-    font-style: normal;
-    margin-top: 0.25em;
-    padding: 0.1em 0.4em;
-    white-space: nowrap; }
-  .work .content .tech-list a:visited {
-    color: #484848; }
+.work .content div {
+  margin: 4em auto; }
+.work .content aside {
+  font-size: 85%; }
+.work .content .tech-list li {
+  display: inline-block;
+  background: #F7F7F7;
+  border-radius: 4.5px;
+  border: 1px solid #E0E0E0;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  margin-top: 0.25em;
+  padding: 0.1em 0.4em;
+  white-space: nowrap; }
+.work .content .tech-list a {
+  color: #484848; }
   .work .content .tech-list a:hover {
     color: rgba(248, 47, 83, 0.7); }
-  .work .content .tech-list a:active {
-    color: #484848; }
-@media only screen and (min-width: 450px) {
-  .work .content .device {
-    margin-bottom: -25px; }
-  .work .content div {
-    margin: 75px auto; } }
 @media only screen and (min-width: 890px) {
-  .work .content #svg {
-    height: 110%;
-    width: 110%;
-    background: transparent; }
   .work .content .preview-left {
     display: inline-block; }
     .work .content .preview-left section {
