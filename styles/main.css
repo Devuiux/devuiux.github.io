@@ -1077,27 +1077,27 @@ footer {
   white-space: nowrap; }
 .work .content .tech-list a {
   color: #484848; }
-  .work .content .tech-list a:hover {
-    color: rgba(248, 47, 83, 0.7); }
 @media only screen and (min-width: 890px) {
+  .work .content a:hover {
+    color: rgba(248, 47, 83, 0.7); }
+  .work .content section {
+    width: 68.5%; }
+  .work .content aside {
+    padding-top: 2em;
+    width: 28.5%;
+    margin-left: 3%; }
   .work .content .preview-left {
     display: inline-block; }
     .work .content .preview-left section {
-      float: left;
-      width: 68.5%; }
+      float: left; }
     .work .content .preview-left aside {
-      float: right;
-      width: 28.5%;
-      margin-left: 3%; }
+      float: right; }
   .work .content .preview-right {
     display: inline-block; }
     .work .content .preview-right section {
-      float: right;
-      width: 68.5%; }
+      float: right; }
     .work .content .preview-right aside {
-      float: left;
-      width: 28.5%;
-      margin-right: 3%; } }
+      float: left; } }
 
 .about .content {
   max-width: 600px;
