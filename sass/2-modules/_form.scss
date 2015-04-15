@@ -7,7 +7,7 @@ Form
 .cd-form {
     width: 90%;
     max-width: $M; // breakpoints inside partials > _layout.scss
-    margin: 4em auto;
+    @include margin(0 auto 4em auto);
     fieldset {
         margin: 0;
         padding: 0;
@@ -114,10 +114,10 @@ Form
     .cd-form-list li {
         /* wrapper for radio and checkbox input types */
         
-        display: inline-block;
+        @include inline-block;
         position: relative;
         @include user-select(none);
-        margin: 0 26px 16px 0;
+        @include margin(0 26px 16px 0);
         float: left;
     }
     //here was radio

@@ -1,45 +1,48 @@
 .work
 	.content
-		margin-bottom: 100px
-		.device
-			+display(flex)
-			margin-bottom: -75px
+		div
+			margin: 4em auto
 		aside
 			font-size: $work-description-font-size
 
-	@media only screen and (min-width: 450px)
-		.content
-			.device
-				margin-bottom: auto
 
-			div
-				margin: 75px auto
+		.tech-list
+			li	
+				@include inline-block	
+				background: #F7F7F7
+				border-radius: $base-border-radius * 1.5
+				border: 1px solid #E0E0E0
+				text-transform: uppercase
+				font-size: 1.2em
+				margin-top: 0.25em
+				padding: 0.1em 0.4em
+				white-space: nowrap
+
+			a
+				color: $base-font-color
 
 
 	@media only screen and (min-width: 890px)
+
 		.content
-
-			#svg
-				+size(110%)
-				background: transparent
-
+			a
+				&:hover
+					color: rgba($base-link-color, 0.7)
+			section
+				width: 68.5%
+			aside
+				padding-top: 2em
+				width: 28.5%
+				margin-left: 3%
 			.preview-left		
-				display: inline-block
+				@include inline-block
 				section
 					float: left
-					width: 68.5%
 				aside
 					float: right
-					width: 28.5%
-					margin-left: 3%
-					
 			.preview-right	
-				display: inline-block
+				@include inline-block
 				section
 					float: right
-					width: 68.5%
-					
 				aside
 					float: left
-					width: 28.5%
-					margin-right: 3%

@@ -5,20 +5,13 @@
 			max-width: $M
 	.view-more
 		text-align: center
-		a
-			color: $base-link-color
-			text-decoration: none
-			display: inline-block
-			font-family: $sans-serif-2
-			font-size: 1em
-			font-weight: 400
-			margin: auto auto 1em auto
-			position: relative
-			text-transform: uppercase
-			&:hover
-				color: rgba($base-link-color, 0.7)
-			span
-				font-size: 1em
-				position: absolute
-				right: -12px
-				top: -1px
+
+	.presentation
+		@include padding(2em 0)
+		.cd-container
+			width: 90%
+			+margin(0 auto)
+			+clearfix
+			+MQ(XL)
+				max-width: $XL
+				width: 100%

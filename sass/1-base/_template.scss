@@ -11,10 +11,15 @@ Primary style
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+/* applies to GIF and PNG images; avoids blurry edges */
 
 *::after,
 *::before {
     content: '';
+}
+
+input, textarea, select, button {
+    font-family:inherit;font-size:inherit;
 }
 
 button::before, button::after {
@@ -22,6 +27,8 @@ button::before, button::after {
 }
 
 body {
+    @include image-rendering(pixelated);
+    -webkit-font-smoothing: antialiased;
     font: {
         family: $primary-font;
     }
@@ -66,6 +73,7 @@ html,
 body {
     @include size(100%);
     font-size: 1em;
+    font-family: $sans-serif;
     line-height: 1.25;
     @include MQ(M) {
         line-height: 1.375;
@@ -75,22 +83,8 @@ body {
 .content {
     position: relative;
     width: 90%;
-    @include MQ(L) {
-        min-height: 400px;
-    }
 }
 
-.presentation {
-    padding-bottom: 25px;
-    a {
-        color: $color-3;
-    }
-    .cd-container {
-        width: 90%;
-        margin: 0 auto;
-        @include MQ(XL) {
-            max-width: $XL;
-            width: 100%;
-        }
-    }
+h1, h2, h3, h4 {
+    color: black;
 }

@@ -60,9 +60,15 @@ Menu
 .sliding-menu-button {
     @include button(flat, $sliding-menu-background);
     @include position(fixed, null null 10px 10px);
-    //display: inline-block;
-    padding: 9px 10px 7px 10px;
-    border-radius: 1px;
+    svg {
+        @include size(45px 45px);
+        g {
+            fill: $color-3;
+        }
+    }
+    @include inline-block;
+    @include padding(9px 10px 7px 10px);
+    border-radius: 2.5px;
     z-index: 2;
     opacity: 0.7;
 
@@ -70,9 +76,15 @@ Menu
     @include MQ(M) {
         @include position(fixed, auto auto auto 0);
         background: $color-3;
+        svg {
+            @include size(32px 32px);
+            g {
+                fill: $sliding-menu-background;
+            }
+        }
         height: 100%;
         border-right: 2px dashed $border-color;
-        padding: 0 10px;
+        @include padding(0 10px);
         cursor: pointer;
     }
 
