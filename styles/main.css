@@ -48,6 +48,18 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: 'archisticobold';
+  src: url("Archistico_Bold-webfont.eot");
+  src: url("Archistico_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("Archistico_Bold-webfont.woff") format("woff"), url("Archistico_Bold-webfont.ttf") format("truetype"), url("Archistico_Bold-webfont.svg#archisticobold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* @font-face kit by Fonts2u (http://www.fonts2u.com) */
+@font-face {
+  font-family: "Imprima";
+  src: url("Imprima-Regular.eot?") format("eot"), url("Imprima-Regular.woff") format("woff"), url("Imprima-Regular.ttf") format("truetype"), url("Imprima-Regular.svg#Imprima-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 /* -------------------------------- 
 
 Variables
@@ -1047,6 +1059,9 @@ footer {
         max-width: 1170px;
         width: 100%; } }
 
+.work .container {
+  height: 2000px;
+  width: auto; }
 .work .content div {
   margin: 4em auto; }
 .work .content aside {
