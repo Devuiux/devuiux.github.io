@@ -3,8 +3,7 @@
     src: url('Archistico_Bold-webfont.eot');
     src: url('Archistico_Bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('Archistico_Bold-webfont.woff') format('woff'),
-         url('Archistico_Bold-webfont.ttf') format('truetype'),
-         url('Archistico_Bold-webfont.svg#archisticobold') format('svg');
+         url('Archistico_Bold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -15,7 +14,7 @@
 
 @font-face {
     font-family: "Imprima";
-    src: url("Imprima-Regular.eot?") format("eot"), url("Imprima-Regular.woff") format("woff"), url("Imprima-Regular.ttf") format("truetype"), url("Imprima-Regular.svg#Imprima-Regular") format("svg");
+    src: url("Imprima-Regular.eot?") format("eot"), url("Imprima-Regular.woff") format("woff"), url("Imprima-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
