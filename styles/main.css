@@ -186,7 +186,7 @@ h1, h2, h3, h4 {
     position: absolute;
     font-family: Montserrat, sans-serif;
     padding: 8px 10px;
-    color: #EA93BE;
+    color: #A2D7BF;
     font-size: 20px; }
 
 @media screen and (min-width: 860px) {
@@ -249,7 +249,7 @@ Menu
     .sliding-menu-content li a:focus {
       background-color: #F7F7F7; }
     .sliding-menu-content li a:hover {
-      background-color: #A2D7BF;
+      background-color: #f82f53;
       color: #F7F7F7; }
   .sliding-menu-content.is-visible {
     -webkit-transform: translateX(0);
@@ -371,10 +371,10 @@ p {
   line-height: 1.5em; }
 
 a {
-  color: #A2D7BF;
+  color: #f82f53;
   text-decoration: none; }
   a:hover {
-    color: rgba(162, 215, 191, 0.6); }
+    color: rgba(248, 47, 83, 0.6); }
 
 .type {
   border-bottom: 1px solid;
@@ -528,7 +528,7 @@ Skills
     .skills .progress-bar-indication p {
       line-height: 1.5em; }
     .skills .progress-bar-indication > span.meter {
-      background-color: #A2D7BF;
+      background-color: #f82f53;
       background-repeat: repeat-x;
       background-size: 40px 40px;
       border-bottom-right-radius: 0;
@@ -606,7 +606,7 @@ Form
       outline: none;
       border-color: #ffffff;
       background-color: #ffffff;
-      box-shadow: #A2D7BF; }
+      box-shadow: 3px 3px 3px rgba(62, 88, 95, 0.5); }
   .cd-form #message:focus {
     background-color: #ffffff; }
   .cd-form .cd-select {
@@ -626,7 +626,7 @@ Form
       background: url("../../images/form/cd-icon-arrow.svg") no-repeat center center;
       pointer-events: none; }
   .cd-form select {
-    box-shadow: #A2D7BF;
+    box-shadow: 3px 3px 3px rgba(62, 88, 95, 0.5);
     cursor: pointer; }
   .cd-form select::-ms-expand {
     display: none; }
@@ -653,7 +653,7 @@ Form
   .cd-form input[type="submit"] {
     /* button style */
     border: none;
-    background: #A2D7BF;
+    background: #f82f53;
     border-radius: 0.15em;
     padding: 8px 10px;
     color: #ffffff;
@@ -670,7 +670,7 @@ Form
     font-size: 1.1rem;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15); }
     .no-touch .cd-form input[type="submit"]:hover {
-      background: #b4dfcb; }
+      background: #f94867; }
     .cd-form input[type="submit"]:focus {
       outline: none;
       background: #ffffff; }
@@ -840,7 +840,7 @@ footer {
   color: #484848; }
 @media only screen and (min-width: 890px) {
   .work .content a:hover {
-    color: rgba(162, 215, 191, 0.7); }
+    color: rgba(248, 47, 83, 0.7); }
   .work .content section {
     width: 68.5%; }
   .work .content aside {
