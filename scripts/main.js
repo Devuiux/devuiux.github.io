@@ -6,11 +6,11 @@ jQuery(document).ready(function() {
         $('.js-menu-screen').delay(900).toggleClass('is-visible');
         e.preventDefault();
     });
-});
+
 //menu
 
 //form
-jQuery(document).ready(function($) {
+
     if ($('.floating-labels').length > 0) floatLabels();
 
     function floatLabels() {
@@ -27,7 +27,6 @@ jQuery(document).ready(function($) {
 
     function checkVal(inputField) {
         (inputField.val() == '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
-    }
+    };
 });
 //form
-
