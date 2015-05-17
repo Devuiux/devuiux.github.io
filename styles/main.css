@@ -152,6 +152,29 @@ body {
 h1, h2, h3, h4 {
   color: black; }
 
+.shadow-parent .shadow-child {
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; }
+  .shadow-parent .shadow-child:before, .shadow-parent .shadow-child:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 70%;
+    max-width: 14em;
+    /* avoid rotation causing ugly appearance at large container widths */
+    max-height: 120px;
+    height: 55%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    -webkit-transform: skew(-15deg) rotate(-6deg);
+    transform: skew(-15deg) rotate(-6deg); }
+  .shadow-parent .shadow-child:after {
+    left: auto;
+    right: 10px;
+    -webkit-transform: skew(15deg) rotate(6deg);
+    transform: skew(15deg) rotate(6deg); }                        
+                        
 .latest {
   position: relative;
   background: #F7F7F7;
