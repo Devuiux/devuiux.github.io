@@ -606,7 +606,7 @@ Form
       outline: none;
       border-color: #ffffff;
       background-color: #ffffff;
-      box-shadow: 3px 3px 3px rgba(62, 88, 95, 0.5); }
+      box-shadow: 0px 2px 4px rgba(62, 88, 95, 0.5); }
   .cd-form #message:focus {
     background-color: #ffffff; }
   .cd-form .cd-select {
@@ -626,7 +626,7 @@ Form
       background: url("../../images/form/cd-icon-arrow.svg") no-repeat center center;
       pointer-events: none; }
   .cd-form select {
-    box-shadow: 3px 3px 3px rgba(62, 88, 95, 0.5);
+    box-shadow: 0px 2px 4px rgba(62, 88, 95, 0.5);
     cursor: pointer; }
   .cd-form select::-ms-expand {
     display: none; }
