@@ -830,6 +830,10 @@ footer {
   padding: 1em 0 3em;
   width: 90%; }
   footer h3 {
+                                                                                                                                                  margin-left: 20px;
+    @media only screen and (min-width: 600px) {
+    margin-left: 50px;
+                                                                                            }
     font-size: 90%; }
   @media only screen and (min-width: 1170px) {
     footer {
