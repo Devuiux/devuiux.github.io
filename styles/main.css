@@ -146,11 +146,11 @@ body {
       line-height: 1.375; } }
 
 ::-moz-selection { /* Code for Firefox */
-    color: #A2D7BF;
-    background: #F7F7F7;}
+    color: #F7F7F7;
+    background: #A2D7BF;}
 ::selection {
-    color: #A2D7BF;
-    background: #F7F7F7;}
+    color: #F7F7F7;
+    background: #A2D7BF;}
 .content {
   position: relative;
   width: 90%; }
