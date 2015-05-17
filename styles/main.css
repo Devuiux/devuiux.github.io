@@ -164,7 +164,7 @@ h1, h2, h3, h4 {
     width: 70%;
     max-width: 14em;
     /* avoid rotation causing ugly appearance at large container widths */
-    max-height: 120px;
+    max-height: 60px;
     height: 55%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     -webkit-transform: skew(-15deg) rotate(-6deg);
@@ -817,24 +817,24 @@ Middle
    background-position: center bottom;}
   .middle h2 {
     font-size: 145%;
+    margin-left: 20px;
     margin-bottom: 0.5em; }
-
+  @media only screen and (min-width: 600px) {
+   .middle h2 {margin-left: 50px;}}
 /* -------------------------------- 
 
 Footer
 
 -------------------------------- */
 footer {
-  border-top: 1px solid #ABB7B7;
   background: #F7F7F7;
   padding: 1em 0 3em;
-  width: 90%; }
+  width: 100%; }
   footer h3 {
+ margin-left: 20px;
     font-size: 90%; }
-  @media only screen and (min-width: 1170px) {
-    footer {
-      width: 100%; } }
-
+  @media only screen and (min-width: 600px) {
+   footer h3 {                                                                             margin-left: 50px;}}
 .welcome .content {
   margin: 4em auto; }
   @media only screen and (min-width: 600px) {
