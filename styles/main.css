@@ -391,7 +391,7 @@ header {
     display: inline-block;
     float: right;
     margin-right: 20px;
-    margin-bottom: 0.3em; }
+    margin-top: 25px; }
   @media only screen and (min-width: 600px) {
     header {
       background-position: 50px center; }
