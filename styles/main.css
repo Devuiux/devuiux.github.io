@@ -246,7 +246,7 @@ Menu
 
 -------------------------------- */
 .sliding-menu-content {
-  font-family: "Imprima", sans-serif;
+  font-family: "Open Sans", sans-serif;
   position: fixed;
   top: 0px;
   right: auto;
@@ -256,8 +256,8 @@ Menu
   width: 220px;
   -webkit-transform: translateX(-220px);
   transform: translateX(-220px);
-  transition: all 0.5s ease;
-  background: #555555;
+  transition: all 0.4s ease-in-out;
+  background: #404040;
   z-index: 3;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
@@ -269,7 +269,7 @@ Menu
   .sliding-menu-content a {
     text-decoration: none; }
   .sliding-menu-content li a {
-    border-bottom: 1px solid #6e6e6e;
+    border-bottom: 1px solid #595959;
     color: #F7F7F7;
     display: block;
     font-weight: bold;
@@ -282,6 +282,37 @@ Menu
   .sliding-menu-content.is-visible {
     -webkit-transform: translateX(0);
     transform: translateX(0); }
+  .sliding-menu-content .social {
+    margin: 150px auto 0;
+    width: 100%; }
+    .sliding-menu-content .social li {
+      display: inline-block;
+      overflow: hidden;
+      border-bottom: 1px solid #595959; }
+      .sliding-menu-content .social li:first-child {
+        margin-left: 30px; }
+        .sliding-menu-content .social li:first-child a {
+          background-image: url(../../images/f_64.png);
+          background-size: 100%; }
+      .sliding-menu-content .social li:nth-child(2) a {
+        background-image: url(../../images/GitHub-Mark-Light-64px.png); }
+      .sliding-menu-content .social li:last-child a {
+        background-image: url(http://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png); }
+      .sliding-menu-content .social li a {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 75%;
+        padding: 0;
+        border-bottom: none;
+        height: 50px;
+        width: 50px;
+        transition: all 0.3s ease-in-out;
+        -webkit-transform: translateY(18px);
+        transform: translateY(18px); }
+        .sliding-menu-content .social li a:hover {
+          background-color: transparent;
+          -webkit-transform: translateY(0px);
+          transform: translateY(0px); }
 
 .sliding-menu-fade-screen {
   position: fixed;
