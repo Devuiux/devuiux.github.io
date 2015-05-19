@@ -107,14 +107,12 @@ body {
     body {
       padding-left: 52px; } }
 
-
 header, .content, .presentation, .middle, footer {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto; }
   header:after, .content:after, .presentation:after, .middle:after, footer:after {
     content: "";
-    display: table;
     clear: both; }
 
 html,
