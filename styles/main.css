@@ -98,7 +98,6 @@ button::before, button::after {
   content: none !important; }
 
 body {
-  image-rendering: pixelated;
   -webkit-font-smoothing: antialiased;
   font-family: "Imprima", sans-serif;
   position: relative;
