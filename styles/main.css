@@ -881,7 +881,7 @@ footer {
   width: auto; }
 .work .content div {
   margin: 4em auto; }
-.work .content aside {
+.work .content .description {
   font-size: 85%; }
 .work .content .tech-list li {
   display: inline-block;
@@ -898,23 +898,23 @@ footer {
 @media only screen and (min-width: 890px) {
   .work .content a:hover {
     color: rgba(248, 47, 83, 0.7); }
-  .work .content section {
+  .work .content .device {
     width: 68.5%; }
-  .work .content aside {
+  .work .content .description {
     padding-top: 2em;
     width: 28.5%;
     margin-left: 3%; }
   .work .content .preview-left {
     display: inline-block; }
-    .work .content .preview-left section {
+    .work .content .preview-left .device {
       float: left; }
-    .work .content .preview-left aside {
+    .work .content .preview-left .description {
       float: right; }
   .work .content .preview-right {
     display: inline-block; }
-    .work .content .preview-right section {
+    .work .content .preview-right .device {
       float: right; }
-    .work .content .preview-right aside {
+    .work .content .preview-right .description {
       float: left; } }
 
 .about .content {
