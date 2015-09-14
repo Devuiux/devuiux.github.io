@@ -925,3 +925,42 @@ footer {
   margin-top: 4em; }
 
 /*# sourceMappingURL=main.css.map */
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto !important;
+  display: block;
+}
+
+.big-preview {
+  max-width: 980px;
+  padding: 0 1em;
+  margin: 4em auto !important;
+}
+
+.big-preview .description {
+  font-size: 0.7em;
+  margin: 2em 0;
+}
+
+.big-preview .description p {
+  margin: 0 !important;
+}
+
+.big-preview img {
+  -webkit-box-shadow: 0 0 8px #666;
+  -moz-box-shadow: 0 0 8px #666;    
+  box-shadow: 0 0 8px #666;
+  -webkit-border-radius: 2.4px;
+  -moz-border-radius: 2.4px;
+  border-radius: 2.4px;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.big-preview img:hover {
+  -webkit-box-shadow: 0 0 20px #999;
+  -moz-box-shadow: 0 0 20px #999;    
+  box-shadow: 0 0 20px #999;
+}
