@@ -883,7 +883,7 @@ footer {
   margin: 4em auto; }
 .work .content .description {
   font-size: 85%; }
-.work .content .tech-list li {
+.tech-list li {
   display: inline-block;
   background: #F7F7F7;
   border-radius: 4.5px;
@@ -893,8 +893,9 @@ footer {
   margin-top: 0.25em;
   padding: 0.1em 0.4em;
   white-space: nowrap; }
-.work .content .tech-list a {
-  color: #484848; }
+.tech-list a {
+  color: #484848;  
+}
 @media only screen and (min-width: 890px) {
   .work .content a:hover {
     color: rgba(248, 47, 83, 0.7); }
