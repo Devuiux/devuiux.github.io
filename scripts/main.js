@@ -45,6 +45,6 @@ jQuery(document).ready(function() {
 
     function checkVal(inputField) {
         (inputField.val() == '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
-    };
+    }
 });
 //form
