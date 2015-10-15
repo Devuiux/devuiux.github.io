@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Catalin Costinas | Front-End Developer & UI/UX Designer</title>
+  <meta name="author" content="Catalin Costinas">
+  <meta name="description" content="Front-End & UI/UX Portfolio">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h4 class="fadein">Hi, my name is Catalin Costinas, I'm a self-taught Front-End Developer based in Cluj-Napoca and this is my portfolio.</h4>
+  </header>
+  <section class="cd-section">
+    <ul class="container cd-modal-action">
+      <li>
+        <a class="box box-1" data-type="modal-trigger" name="work"><h2 class="title">work</h2></a>
+        <span class="cd-modal-bg"></span>
+      </li>
+      <li>
+        <a class="box box-2" data-type="modal-trigger" name="about"><h2 class="title">about</h2></a>
+        <span class="cd-modal-bg"></span>
+      </li>
+      <li>
+        <a class="box box-3" data-type="modal-trigger" name="code"><h2 class="title">code</h2></a>
+        <span class="cd-modal-bg"></span>
+      </li>
+      <li>
+        <a class="box box-4" data-type="modal-trigger" name="contact"><h2 class="title">contact</h2></a>
+        <span class="cd-modal-bg"></span>
+      </li>
+    </ul>
+    <div class="cd-modal">
+      <div class="cd-modal-content"></div>
+    </div>
+    <a href="#0" class="cd-modal-close">Close</a>
+  </section>
+
+  <script type="text/ractive" id="template">    
+
+    {{#if dataout}}
+
+        {{{dataout}}}
+
+    {{/if}}
+
+  </script>
+
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/velocity.min.js"></script>
+  <script src='http://cdn.ractivejs.org/edge/ractive.js'></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

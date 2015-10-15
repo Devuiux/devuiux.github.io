@@ -1,0 +1,185 @@
+//////// IMPORTS ////////////////////////////
+
+@import 'bourbon/bourbon'
+@import 'variables'
+@import 'components'
+@import 'fonts'
+
+///////////////////////////////////////////////
+
+*, *::after, *::before
+  +box-sizing(border-box)
+
+body
+  color: $modal-bg
+  background-color: $main-bg
+  
+  &.overflow-hidden
+    // used when modal is visible
+    overflow: hidden
+
+a
+  color: $accent
+  text-decoration: none
+  &:hover
+    color: #00e5ff
+
+header
+  color: #bbb
+  text-align: center
+  margin: 2em 1em 0
+
++MQ(M)
+  header
+    margin: 4em 1em 0
+
++MQ(L)
+  header
+    margin-top: 6em
+
+ul
+  list-style-type: none
+  +padding(0)
+
+.container
+  position: relative
+  margin-top: 40px
+  text-align: center
+  +user-select(none)
+
+.box
+  position: relative
+  display: block
+  margin: 0 auto
+  background: $box-bg
+  max-width: $mobile-box-width
+  height: $mobile-box-height
+  +transition(all 0.3s $ease-in-out-sine 0s)
+  +font-smoothing
+  cursor: pointer
+
+  &:hover, &.hover
+    max-width: $mobile-box-width + 8px
+    height: $mobile-box-height + 8px
+    box-shadow: $box-shadow
+    border-radius: $radius
+    margin: 10px auto
+  
+  &.to-circle
+    max-width: $mobile-box-height + 60px
+    height: $mobile-box-height
+    background-color: $modal-bg
+    border-radius: $radius
+    margin: 10px auto
+
+    h2
+      color: transparent
+  
+  h2
+    position: absolute
+    font-family: Montserrat, sans-serif
+    padding: 8px 20px
+    color: #EA93BE
+    font-size: $mobile-box-height / 4
+    text-transform: uppercase
+    
+.cd-modal-action
+  //position: relative
+  .cd-modal-bg
+    background-color: $modal-bg
+    position: absolute
+    z-index: 1
+    height: $mobile-box-height
+    width: $mobile-box-height + 60px
+    border-radius: $radius
+    opacity: 0
+    visibility: hidden
+    +transform(translateX(-($mobile-box-height + 60px)/2) translateY(-$mobile-box-height - 18px))
+    +transition(visibility 0s 0.5s)
+
+    &.is-visible
+      opacity: 1
+      visibility: visible
+
+@media (max-width: $M)
+
+  .box-1
+    +border-top-radius($radius)
+  .box-4
+    +border-bottom-radius($radius)
+      
+      
++MQ(M)  
+  
+  li
+    display: inline-block
+
+  .box
+    display: inline-block
+    +size($box-size)
+    margin: 50px -3px
+
+    &:hover, &.hover
+      +size($box-size + 8px)
+      margin: 46px 10px
+    
+    h2
+      padding: 10px 10px
+      font-size: $box-size / 6
+    
+    &.to-circle
+      max-width: $box-size - 30px
+      width: $box-size - 30px
+      height: $box-size - 30px
+      margin: 46px 10px
+      color: transparent
+      +transform(translateY(-15px))
+  
+  .cd-modal-action
+    .cd-modal-bg
+      width: $box-size - 30px
+      height: $box-size - 30px
+      +transform(translateY(-$box-size - 35px) translateX(-$box-size/2 + 15px))
+
+  .box-1
+    +border-left-radius($radius)
+  .box-4
+    +border-right-radius($radius)
+      
+      
++MQ(L)
+  
+  $box-size: 200px
+  
+  .box
+    width: $box-size
+    height: $box-size
+
+    &:hover, &.hover
+      height: $box-size + 8px
+      width: $box-size + 8px
+
+    &.to-circle
+      max-width: $box-size - 30px
+      width: $box-size - 30px
+      height: $box-size - 30px
+    
+    h2
+      padding: 14px 16px
+      font-size: $box-size / 6
+      
+  .cd-modal-action
+    .cd-modal-bg
+      width: $box-size - 30px
+      height: $box-size - 30px
+      +transform(translateY(-$box-size - 35px) translateX(-$box-size/2 + 15px))
+
+
+/////// STYLES PER PAGE //////////////////////////////////////////////////////////////////// 
+
+@import 'modal'
+@import 'work'
+@import 'about'
+@import 'contact'
+
+////////////////////////////////////////////////////////////////////////////////////////////
