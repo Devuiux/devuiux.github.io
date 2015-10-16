@@ -58,36 +58,34 @@ jQuery(document).ready(function($) {
     $.get('pages/' + boxName + '.html').done(function(datain) {
       ractive.set('dataout', datain);
 
-      if (boxName == 'contact' && $('.floating-labels').length > 0)floatLabels();
+      if (boxName == 'contact' && $('.floating-labels').length > 0) floatLabels();
 
       $('.required').each(function() {
 
-          $(this).on('keyup keypress blur change', function() {
-              var regex;
-              var pass;
+        $(this).on('keyup keypress blur change', function() {
+          var regex;
+          var pass;
 
-              if ($(this).attr("id") == "cd-name") {
-                  regex = name_regex;
-              }
-              if ($(this).attr("id") == "cd-email") {
-                  regex = email_regex;
-              }
+          if ($(this).attr("id") == "cd-name") {
+            regex = name_regex;
+          }
+          if ($(this).attr("id") == "cd-email") {
+            regex = email_regex;
+          }
 
-              var inputVal = $(this).val();
-              
-              var id = '#' + $(this).attr("id");
-              
+          var inputVal = $(this).val();
+          var id = '#' + $(this).attr("id");
 
-              InputCustom(id, inputVal, regex, pass);
-          });
+          InputCustom(id, inputVal, regex, pass);
+        });
       });
 
       $('input[type="submit"]').click(function(e) {
-          CheckBefore();
-          
-          if (BeforeSubmit() != true) {
-              e.preventDefault();
-          }
+        CheckBefore();
+
+        if (BeforeSubmit() != true) {
+          e.preventDefault();
+        }
       });
 
     });
@@ -108,7 +106,7 @@ jQuery(document).ready(function($) {
       closeModal();
     }
 
-    $('[data-type="modal-trigger"]').each(function(){
+    $('[data-type="modal-trigger"]').each(function() {
       if (boxName != '' && $(this).attr('name') == boxName && !$(this).hasClass('to-circle')) {
         OpenModal($(this));
       }
@@ -200,7 +198,7 @@ jQuery(document).ready(function($) {
   }
 
   // form
-  
+
   function floatLabels() {
     var inputFields = $('.floating-labels .cd-label').next();
     inputFields.each(function() {
@@ -216,59 +214,59 @@ jQuery(document).ready(function($) {
   function checkVal(inputField) {
     (inputField.val() == '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
   }
-    
+
   var name_regex = /^[a-zA-Z]+$/;
   var email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
 
   function InputCustom(id, inputVar, regex, pass) {
-      var regexIn = regex;
+    var regexIn = regex;
 
-      if (!inputVar.match(regexIn) || inputVar.length == 0 || inputVar == '') {
-          $(id).addClass('error');
-      } else if (!pass == '' && inputVar !== pass) {
-          $(id).addClass('error');
-      } else {
-          $(id).removeClass('error');
-      }
+    if (!inputVar.match(regexIn) || inputVar.length == 0 || inputVar == '') {
+      $(id).addClass('error');
+    } else if (!pass == '' && inputVar !== pass) {
+      $(id).addClass('error');
+    } else {
+      $(id).removeClass('error');
+    }
   }
 
   function BeforeSubmit() {
 
-      if ($('.cd-form').find('input, textarea').hasClass('error')) {
+    if ($('.cd-form').find('input, textarea').hasClass('error')) {
 
-        var errorWhere = $('.error').attr('id');
-        
-        var errorMessage = $('.error-message');
-        
+      var errorWhere = $('.error').attr('id');
 
-        if ( errorWhere == 'cd-name') {
-          errorMessage.html('<p>Please enter your NAME (only letters).</p>')
-        }
-        if ( errorWhere == 'cd-email') {
-          errorMessage.html('<p>Please enter a valid EMAIL address.</p>')
-        }
-        if ( errorWhere == 'cd-textarea') {
-          errorMessage.html('<p>Write me a message.</p>')
-        }
+      var errorMessage = $('.error-message');
 
-        errorMessage.removeClass('hide');
-        return false;
 
-      } else {
-
-        return true;
+      if (errorWhere == 'cd-name') {
+        errorMessage.html('<p>Please enter your NAME (only letters).</p>')
       }
+      if (errorWhere == 'cd-email') {
+        errorMessage.html('<p>Please enter a valid EMAIL address.</p>')
+      }
+      if (errorWhere == 'cd-textarea') {
+        errorMessage.html('<p>Write me a message.</p>')
+      }
+
+      errorMessage.removeClass('hide');
+      return false;
+
+    } else {
+
+      return true;
+    }
   }
 
   function CheckBefore() {
 
-      $('.required').each(function() {
-          var id = '#' + $(this).attr("id");
+    $('.required').each(function() {
+      var id = '#' + $(this).attr("id");
 
-          if ($(this).val() == 0) {
-              $(id).addClass('error');
-          }
-      });
+      if ($(this).val() == 0) {
+        $(id).addClass('error');
+      }
+    });
   }
 
   // form
