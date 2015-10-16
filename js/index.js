@@ -1,5 +1,8 @@
 jQuery(document).ready(function($) {
 
+  window.onhashchange = OnHashChange;
+  window.onload = OnHashChange;
+
   var box1 = $('.box-1');
   var box2 = $('.box-2');
   var box3 = $('.box-3');
@@ -47,15 +50,15 @@ jQuery(document).ready(function($) {
     template: '#template'
   });
 
-  function CustomSearch(actionBtn) {
+  function CustomSearch(boxName) {
     $.ajaxSetup({
       cache: false
     });
 
-    $.get('pages/' + actionBtn.attr('name') + '.html').done(function(datain) {
+    $.get('pages/' + boxName + '.html').done(function(datain) {
       ractive.set('dataout', datain);
 
-      if (actionBtn.attr('name') == 'contact' && $('.floating-labels').length > 0)floatLabels();
+      if (boxName == 'contact' && $('.floating-labels').length > 0)floatLabels();
 
       $('.required').each(function() {
 
@@ -71,9 +74,9 @@ jQuery(document).ready(function($) {
               }
 
               var inputVal = $(this).val();
-              console.log(inputVal);
+              
               var id = '#' + $(this).attr("id");
-              console.log(id);
+              
 
               InputCustom(id, inputVal, regex, pass);
           });
@@ -91,12 +94,31 @@ jQuery(document).ready(function($) {
 
   }
 
-  //trigger the animation - open modal window
-  $('[data-type="modal-trigger"]').on('click', function() {
-    var actionBtn = $(this),
-      scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
+  function SetHashLocation(boxName) {
+    window.location.hash = '#' + boxName;
+  }
 
-    CustomSearch(actionBtn);
+  function OnHashChange() {
+    var boxName = window.location.hash.substring(1);
+
+    if (boxName != '') {
+      CustomSearch(boxName);
+    }
+    if (boxName == '') {
+      closeModal();
+    }
+
+    $('[data-type="modal-trigger"]').each(function(){
+      if (boxName != '' && $(this).attr('name') == boxName && !$(this).hasClass('to-circle')) {
+        OpenModal($(this));
+      }
+    });
+
+  }
+
+  function OpenModal(actionBtn) {
+
+    var scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
 
     actionBtn.addClass('to-circle');
     actionBtn.next('.cd-modal-bg').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
@@ -105,12 +127,16 @@ jQuery(document).ready(function($) {
 
     //if browser doesn't support transitions...
     if (actionBtn.parents('.no-csstransitions').length > 0) animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
+  }
+
+  //trigger the animation - open modal window
+  $('[data-type="modal-trigger"]').on('click', function() {
+    var actionBtn = $(this);
+    SetHashLocation(actionBtn.attr('name'));
+
+    OpenModal(actionBtn);
   });
 
-  //trigger the animation - close modal window
-  $('.cd-section .cd-modal-close').on('click', function() {
-    closeModal();
-  });
   $(document).keyup(function(event) {
     if (event.which == '27') closeModal();
   });
@@ -211,9 +237,9 @@ jQuery(document).ready(function($) {
       if ($('.cd-form').find('input, textarea').hasClass('error')) {
 
         var errorWhere = $('.error').attr('id');
-        console.log(errorWhere);
+        
         var errorMessage = $('.error-message');
-        console.log(errorMessage);
+        
 
         if ( errorWhere == 'cd-name') {
           errorMessage.html('<p>Please enter your NAME (only letters).</p>')
