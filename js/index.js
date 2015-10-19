@@ -47,7 +47,8 @@ jQuery(document).ready(function($) {
 
   var ractive = new Ractive({
     el: '.cd-modal-content',
-    template: '#template'
+    template: '#template',
+    debug: false
   });
 
   function CustomSearch(boxName) {
