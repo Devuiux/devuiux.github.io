@@ -1,5 +1,6 @@
 //////// IMPORTS ////////////////////////////
 
+@import 'normalize'
 @import 'bourbon/bourbon'
 @import 'variables'
 @import 'components'
@@ -46,7 +47,7 @@ ul
 .box
   position: relative
   display: block
-  margin: 0 auto
+  +margin(0 auto)
   background: $box-bg
   max-width: $mobile-box-width
   height: $mobile-box-height
@@ -59,14 +60,14 @@ ul
     height: $mobile-box-height + 8px
     box-shadow: $box-shadow
     border-radius: $radius
-    margin: 10px auto
+    +margin(10px auto)
   
   &.to-circle
     max-width: $mobile-box-height + 60px
     height: $mobile-box-height
     background-color: $modal-bg
     border-radius: $radius
-    margin: 10px auto
+    +margin(10px auto)
 
     h2
       color: transparent
@@ -74,7 +75,7 @@ ul
   h2
     position: absolute
     font-family: Montserrat, sans-serif
-    padding: 8px 20px
+    +padding(8px 20px)
     color: #EA93BE
     font:
       size: $mobile-box-height / 4
@@ -122,24 +123,22 @@ ul
 
     &:hover, &.hover
       +size($box-size + 8px)
-      margin: 46px 10px
+      +margin(46px 10px)
     
     h2
-      padding: 10px 10px
+      +padding(10px 10px)
       font-size: $box-size / 6
     
     &.to-circle
       max-width: $box-size - 30px
-      width: $box-size - 30px
-      height: $box-size - 30px
-      margin: 46px 10px
+      +size($box-size - 30px)
+      +margin(46px 10px)
       color: transparent
       +transform(translateY(-15px))
   
   .cd-modal-action
     .cd-modal-bg
-      width: $box-size - 30px
-      height: $box-size - 30px
+      +size($box-size - 30px)
       //+transform(translateY(-$box-size - 35px) translateX(-$box-size/2 + 15px))
       top: 65px
       left: 30px
@@ -155,26 +154,22 @@ ul
   $box-size: 200px
   
   .box
-    width: $box-size
-    height: $box-size
+    +size($box-size)
 
     &:hover, &.hover
-      height: $box-size + 8px
-      width: $box-size + 8px
+      +size($box-size + 8px)
 
     &.to-circle
       max-width: $box-size - 30px
-      width: $box-size - 30px
-      height: $box-size - 30px
+      +size($box-size - 30px)
     
     h2
-      padding: 14px 16px
+      +padding(14px 16px)
       font-size: $box-size / 6
       
   .cd-modal-action
     .cd-modal-bg
-      width: $box-size - 30px
-      height: $box-size - 30px
+      +size($box-size - 30px)
       //+transform(translateY(-$box-size - 35px) translateX(-$box-size/2 + 15px))
 
 

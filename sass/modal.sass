@@ -2,8 +2,7 @@
   position: fixed
   top: 0
   left: 0
-  width: 100%
-  height: 100%
+  +size(100%)
   visibility: hidden
   opacity: 0
   pointer-events: none
@@ -22,8 +21,7 @@
     +background(linear-gradient(to top,rgba($modal-bg, 1), rgba($modal-bg, 0)))
 
   .cd-modal-content
-    height: 100%
-    width: 100%
+    +size(100%)
     padding: 3em 5%
     text-align: left
     overflow-y: auto
@@ -56,8 +54,7 @@
   z-index: 1
   top: 20px
   right: 5%
-  height: 50px
-  width: 50px
+  +size(50px)
   border-radius: 50%
   background: rgba(black, 0.3) url(../img/cd-icon-close.svg) no-repeat center center
   // image replacement
