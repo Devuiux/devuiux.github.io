@@ -52,9 +52,9 @@ jQuery(document).ready(function($) {
   });
 
   function CustomSearch(boxName) {
-    $.ajaxSetup({
-      cache: false
-    });
+    // $.ajaxSetup({
+    //   cache: false
+    // });
 
     $.get('pages/' + boxName + '.html').done(function(datain) {
       ractive.set('dataout', datain);
