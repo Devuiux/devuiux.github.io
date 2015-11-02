@@ -3,11 +3,7 @@ jQuery(document).ready(function($) {
   window.onhashchange = OnHashChange;
   window.onload = OnHashChange;
 
-  var box1 = $('.box-1');
-  var box2 = $('.box-2');
-  var box3 = $('.box-3');
-  var box4 = $('.box-4');
-
+  const box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
 
   box1.addClass('hover').delay(300).queue(function(next) {
     $(this).removeClass('hover');
@@ -58,35 +54,13 @@ jQuery(document).ready(function($) {
 
     $.get('pages/' + boxName + '.html').done(function(datain) {
       ractive.set('dataout', datain);
-
       if (boxName == 'contact' && $('.floating-labels').length > 0) floatLabels();
 
-      $('.required').each(function() {
-
-        $(this).on('keyup keypress blur change', function() {
-          var regex;
-          var pass;
-
-          if ($(this).attr("id") == "cd-name") {
-            regex = name_regex;
-          }
-          if ($(this).attr("id") == "cd-email") {
-            regex = email_regex;
-          }
-
-          var inputVal = $(this).val();
-          var id = '#' + $(this).attr("id");
-
-          InputCustom(id, inputVal, regex, pass);
-        });
-      });
+      CheckRequired();
 
       $('input[type="submit"]').click(function(e) {
         CheckBefore();
-
-        if (BeforeSubmit() != true) {
-          e.preventDefault();
-        }
+        if (BeforeSubmit() != true) e.preventDefault();
       });
 
     });
@@ -100,23 +74,15 @@ jQuery(document).ready(function($) {
   function OnHashChange() {
     var boxName = window.location.hash.substring(1);
 
-    if (boxName != '') {
-      CustomSearch(boxName);
-    }
-    if (boxName == '') {
-      closeModal();
-    }
+    (boxName != '') ? CustomSearch(boxName): closeModal();
 
     $('[data-type="modal-trigger"]').each(function() {
-      if (boxName != '' && $(this).attr('name') == boxName && !$(this).hasClass('to-circle')) {
-        OpenModal($(this));
-      }
+      if (boxName != '' && $(this).attr('name') == boxName && !$(this).hasClass('to-circle')) OpenModal($(this));
     });
 
   }
 
   function OpenModal(actionBtn) {
-
     var scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
 
     actionBtn.addClass('to-circle');
@@ -130,10 +96,9 @@ jQuery(document).ready(function($) {
 
   //trigger the animation - open modal window
   $('[data-type="modal-trigger"]').on('click', function() {
-    var actionBtn = $(this);
-    SetHashLocation(actionBtn.attr('name'));
 
-    OpenModal(actionBtn);
+    SetHashLocation($(this).attr('name'));
+    OpenModal($(this));
   });
 
   $(document).keyup(function(event) {
@@ -191,9 +156,11 @@ jQuery(document).ready(function($) {
 
   function closeModal() {
     var section = $('.cd-section.modal-is-visible');
+
     section.removeClass('modal-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
       animateLayer(section.find('.cd-modal-bg'), 1, false);
     });
+
     //if browser doesn't support transitions...
     if (section.parents('.no-csstransitions').length > 0) animateLayer(section.find('.cd-modal-bg'), 1, false);
   }
@@ -201,13 +168,12 @@ jQuery(document).ready(function($) {
   // form
 
   function floatLabels() {
-    var inputFields = $('.floating-labels .cd-label').next();
-    inputFields.each(function() {
-      var singleInput = $(this);
+    $('.floating-labels .cd-label').next().each(function() {
       //check if user is filling one of the form fields 
-      checkVal(singleInput);
-      singleInput.on('change keyup', function() {
-        checkVal(singleInput);
+      checkVal($(this));
+
+      $(this).on('change keyup', function() {
+        checkVal($(this));
       });
     });
   }
@@ -216,61 +182,50 @@ jQuery(document).ready(function($) {
     (inputField.val() == '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
   }
 
-  var name_regex = /^[a-zA-Z]+$/;
-  var email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+  function InputCustom(id, inputVar, regex) {
+    (!inputVar.match(regex) || inputVar.length == 0 || inputVar == '') ? $(id).addClass('error'): $(id).removeClass('error');
+  }
 
-  function InputCustom(id, inputVar, regex, pass) {
-    var regexIn = regex;
+  function CheckRequired() {
+    $('.required').each(function() {
 
-    if (!inputVar.match(regexIn) || inputVar.length == 0 || inputVar == '') {
-      $(id).addClass('error');
-    } else if (!pass == '' && inputVar !== pass) {
-      $(id).addClass('error');
-    } else {
-      $(id).removeClass('error');
-    }
+      $(this).on('keyup keypress blur change', function() {
+        const name_regex = /^[a-zA-Z]+$/, email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+        var inputVal = $(this).val(), id = '#' + $(this).attr("id");
+        var regex;
+
+        if ($(this).attr("id") == "cd-name") regex = name_regex;
+        if ($(this).attr("id") == "cd-email") regex = email_regex;
+
+        InputCustom(id, inputVal, regex);
+      });
+    });
   }
 
   function BeforeSubmit() {
-
     if ($('.cd-form').find('input, textarea').hasClass('error')) {
-
       var errorWhere = $('.error').attr('id');
-
       var errorMessage = $('.error-message');
 
-
-      if (errorWhere == 'cd-name') {
-        errorMessage.html('<p>Please enter your NAME (only letters).</p>')
-      }
-      if (errorWhere == 'cd-email') {
-        errorMessage.html('<p>Please enter a valid EMAIL address.</p>')
-      }
-      if (errorWhere == 'cd-textarea') {
-        errorMessage.html('<p>Write me a message.</p>')
-      }
+      if (errorWhere == 'cd-name') errorMessage.html('<p>Please enter your NAME (only letters).</p>');
+      if (errorWhere == 'cd-email') errorMessage.html('<p>Please enter a valid EMAIL address.</p>');
+      if (errorWhere == 'cd-textarea') errorMessage.html('<p>Write me a message.</p>');
 
       errorMessage.removeClass('hide');
       return false;
 
     } else {
-
       return true;
     }
   }
 
   function CheckBefore() {
-
     $('.required').each(function() {
       var id = '#' + $(this).attr("id");
 
-      if ($(this).val() == 0) {
-        $(id).addClass('error');
-      }
+      if ($(this).val() == 0) $(id).addClass('error');
     });
   }
 
   // form
-
-
 });
