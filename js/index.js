@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+  Ractive.DEBUG = false;
 
   window.onhashchange = OnHashChange;
   window.onload = OnHashChange;
