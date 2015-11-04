@@ -4,6 +4,8 @@ Ractive.DEBUG = false;
 window.onhashchange = OnHashChange;
 window.onload = OnHashChange;
 
+/*jshint esnext: true */
+
 const box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
 
 box1.addClass('hover').delay(300).queue(function(next) {
@@ -87,7 +89,7 @@ function WhichTransitionEvent(){
     "OTransition"     : "oTransitionEnd",
     "MozTransition"   : "transitionend",
     "WebkitTransition": "webkitTransitionEnd"
-  }
+  };
 
   for (t in transitions) {
     if (el.style[t] !== undefined) return transitions[t];
@@ -195,12 +197,12 @@ function CheckRequired() {
 
     $(this).on('keyup keypress blur change', function() {
       const name_regex = /^[a-zA-Z]+$/, email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-      var regex, inputVal = $(this).val();
+      var regex;
 
       if ($(this).attr("id") == "cd-name") regex = name_regex;
       if ($(this).attr("id") == "cd-email") regex = email_regex;
 
-      (!inputVal.match(regex) || inputVal.length == 0 || inputVal == '') ? $(this).addClass('error'): $(this).removeClass('error');
+      (!$(this).val().match(regex) || $(this).val().length == 0 || $(this).val() == '') ? $(this).addClass('error'): $(this).removeClass('error');
     });
   });
 }
