@@ -79,11 +79,28 @@ function OnHashChange() {
 
 }
 
+function WhichTransitionEvent(){
+  var t, el = document.createElement("fakeelement");
+
+  const transitions = {
+    "transition"      : "transitionend",
+    "OTransition"     : "oTransitionEnd",
+    "MozTransition"   : "transitionend",
+    "WebkitTransition": "webkitTransitionEnd"
+  }
+
+  for (t in transitions) {
+    if (el.style[t] !== undefined) return transitions[t];
+  }
+}
+
+const transitionEvent = WhichTransitionEvent();
+
 function OpenModal(actionBtn) {
   var scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
 
   actionBtn.addClass('to-circle');
-  actionBtn.next('.cd-modal-bg').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+  actionBtn.next('.cd-modal-bg').addClass('is-visible').one(transitionEvent, function() {
     animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
   });
 
@@ -133,7 +150,7 @@ function animateLayer(layer, scaleVal, bool) {
     scale: scaleVal
   }, 400, function() {
     $('body').toggleClass('overflow-hidden', bool);
-    (bool) ? layer.parents('.cd-section').addClass('modal-is-visible').end().off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend'): layer.removeClass('is-visible').removeAttr('style').siblings('[data-type="modal-trigger"]').removeClass('to-circle');
+    (bool) ? layer.parents('.cd-section').addClass('modal-is-visible').end().off(transitionEvent): layer.removeClass('is-visible').removeAttr('style').siblings('[data-type="modal-trigger"]').removeClass('to-circle');
   });
 }
 
@@ -154,7 +171,7 @@ function updateLayer() {
 function closeModal() {
   var section = $('.cd-section.modal-is-visible');
 
-  section.removeClass('modal-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+  section.removeClass('modal-is-visible').one(transitionEvent, function() {
     animateLayer(section.find('.cd-modal-bg'), 1, false);
   });
 
@@ -166,17 +183,11 @@ function closeModal() {
 
 function floatLabels() {
   $('.floating-labels .cd-label').next().each(function() {
-    //check if user is filling one of the form fields 
-    checkVal($(this));
 
     $(this).on('change keyup', function() {
-      checkVal($(this));
+      ($(this).val() != '') ? $(this).prev('.cd-label').addClass('float'): $(this).prev('.cd-label').removeClass('float');
     });
   });
-}
-
-function checkVal(inputField) {
-  (inputField.val() == '') ? inputField.prev('.cd-label').removeClass('float'): inputField.prev('.cd-label').addClass('float');
 }
 
 function CheckRequired() {
@@ -198,7 +209,7 @@ function BeforeSubmit() {
   if ($('.cd-form').find('input, textarea').hasClass('error')) {
     var errorWhere = $('.error').attr('id');
     var errorMessage = $('.error-message');
-    
+
     if ($(".error").length > 1) errorMessage.html('<p>Please fill out the required fields.</p>')
     else if (errorWhere == 'cd-name') errorMessage.html('<p>Please enter your NAME (only letters).</p>')
     else if (errorWhere == 'cd-email') errorMessage.html('<p>Please enter a valid EMAIL address.</p>')
