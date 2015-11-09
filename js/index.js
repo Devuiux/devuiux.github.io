@@ -4,8 +4,6 @@ Ractive.DEBUG = false;
 window.onhashchange = OnHashChange;
 window.onload = OnHashChange;
 
-/*jshint esnext: true */
-
 const box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
 
 box1.addClass('hover').delay(300).queue(function(next) {
@@ -43,11 +41,26 @@ box1.addClass('hover').delay(300).queue(function(next) {
   });
 });
 
-
 var ractive = new Ractive({
   el: '.cd-modal-content',
   template: '#template',
   debug: false
+});
+
+//trigger the animation - open modal window
+$('[data-type="modal-trigger"]').on('click', function() {
+
+  SetHashLocation($(this).attr('name'));
+  OpenModal($(this));
+});
+
+$(document).keyup(function(event) {
+  if (event.which == '27') closeModal();
+});
+
+$(window).on('resize', function() {
+  //on window resize - update cover layer dimention and position
+  if ($('.cd-section.modal-is-visible').length > 0) window.requestAnimationFrame(updateLayer);
 });
 
 function CustomSearch(boxName) {
@@ -109,22 +122,6 @@ function OpenModal(actionBtn) {
   //if browser doesn't support transitions...
   if (actionBtn.parents('.no-csstransitions').length > 0) animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue[0], scaleValue[1], true);
 }
-
-//trigger the animation - open modal window
-$('[data-type="modal-trigger"]').on('click', function() {
-
-  SetHashLocation($(this).attr('name'));
-  OpenModal($(this));
-});
-
-$(document).keyup(function(event) {
-  if (event.which == '27') closeModal();
-});
-
-$(window).on('resize', function() {
-  //on window resize - update cover layer dimention and position
-  if ($('.cd-section.modal-is-visible').length > 0) window.requestAnimationFrame(updateLayer);
-});
 
 function retrieveScale(btn) {
 
@@ -221,7 +218,7 @@ function BeforeSubmit() {
     else if (errorWhere == 'cd-email') errorMessage.html('<p>Please enter a valid EMAIL address.</p>')
     else if (errorWhere == 'cd-textarea') errorMessage.html('<p>Write me a message.</p>');
 
-    errorMessage.removeClass('hide');
+    errorMessage.fadeIn(400);
     return false;
 
   } else {
