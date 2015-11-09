@@ -101,9 +101,6 @@ const transitionEvent = WhichTransitionEvent();
 function OpenModal(actionBtn) {
   var scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
 
-  //console.log(actionBtn.next('.cd-modal-bg'));
-console.log(scaleValue);
-
   actionBtn.addClass('to-circle');
   actionBtn.next('.cd-modal-bg').addClass('is-visible').one(transitionEvent, function() {
     animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue[0], scaleValue[1], true);
@@ -168,7 +165,7 @@ function updateLayer() {
     layerTop = layer.siblings('.box').offset().top + layerH - $(window).scrollTop(),
     layerLeft = layer.siblings('.box').offset().left + layerW,
     scale = scaleValue(layerTop, layerLeft, layerH, layerW);
-    
+
   layer.velocity({
     top: layerTop - layer.height() / 2,
     left: layerLeft - layer.width() / 2,
