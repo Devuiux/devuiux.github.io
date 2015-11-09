@@ -101,13 +101,16 @@ const transitionEvent = WhichTransitionEvent();
 function OpenModal(actionBtn) {
   var scaleValue = retrieveScale(actionBtn.next('.cd-modal-bg'));
 
+  //console.log(actionBtn.next('.cd-modal-bg'));
+console.log(scaleValue);
+
   actionBtn.addClass('to-circle');
   actionBtn.next('.cd-modal-bg').addClass('is-visible').one(transitionEvent, function() {
-    animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
+    animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue[0], scaleValue[1], true);
   });
 
   //if browser doesn't support transitions...
-  if (actionBtn.parents('.no-csstransitions').length > 0) animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue, true);
+  if (actionBtn.parents('.no-csstransitions').length > 0) animateLayer(actionBtn.next('.cd-modal-bg'), scaleValue[0], scaleValue[1], true);
 }
 
 //trigger the animation - open modal window
@@ -127,29 +130,32 @@ $(window).on('resize', function() {
 });
 
 function retrieveScale(btn) {
-  var btnRadius = btn.width() / 4,
-    left = btn.offset().left + btnRadius,
-    top = btn.offset().top + btnRadius - $(window).scrollTop(),
-    scale = scaleValue(top, left, btnRadius, $(window).height(), $(window).width());
+
+  var btnH = btn.height() / 2, btnW = btn.width() / 2,
+    top = btn.offset().top + btnH - $(window).scrollTop(),
+    left = btn.offset().left + btnW,
+    scale = scaleValue(top, left, btnH, btnW);
 
   btn.css('position', 'fixed').velocity({
-    top: top - btnRadius,
-    left: left - btnRadius,
+    top: top - btnH,
+    left: left - btnW,
     translateX: 0,
   }, 0);
 
-  return scale;
+  return [scale[0], scale[1]];
 }
 
-function scaleValue(topValue, leftValue, radiusValue, windowW, windowH) {
-  var maxDistHor = (leftValue > windowW / 2) ? leftValue : (windowW - leftValue),
-    maxDistVert = (topValue > windowH / 2) ? topValue : (windowH - topValue);
-  return Math.ceil(Math.sqrt(Math.pow(maxDistHor, 2) + Math.pow(maxDistVert, 2)) / radiusValue);
+function scaleValue(topValue, leftValue, hValue, wValue) {
+  var maxDistH = (topValue > $(window).height() / 2) ? topValue : ($(window).height() - topValue),
+     maxDistW = (leftValue > $(window).width() / 2) ? leftValue : ($(window).width() - leftValue);
+
+  return [Math.ceil(maxDistH / hValue), Math.ceil(maxDistW / wValue)];
 }
 
-function animateLayer(layer, scaleVal, bool) {
+function animateLayer(layer, scaleValY, scaleValX, bool) {
   layer.velocity({
-    scale: scaleVal
+    scaleY: scaleValY,
+    scaleX: scaleValX
   }, 400, function() {
     $('body').toggleClass('overflow-hidden', bool);
     (bool) ? layer.parents('.cd-section').addClass('modal-is-visible').end().off(transitionEvent): layer.removeClass('is-visible').removeAttr('style').siblings('[data-type="modal-trigger"]').removeClass('to-circle');
@@ -158,15 +164,16 @@ function animateLayer(layer, scaleVal, bool) {
 
 function updateLayer() {
   var layer = $('.cd-section.modal-is-visible').find('.cd-modal-bg'),
-    layerRadius = layer.width() / 2,
-    layerTop = layer.siblings('.box').offset().top + layerRadius - $(window).scrollTop(),
-    layerLeft = layer.siblings('.box').offset().left + layerRadius,
-    scale = scaleValue(layerTop, layerLeft, layerRadius, $(window).height(), $(window).width());
-
+    layerH = layer.height() / 2, layerW = layer.width() / 2,
+    layerTop = layer.siblings('.box').offset().top + layerH - $(window).scrollTop(),
+    layerLeft = layer.siblings('.box').offset().left + layerW,
+    scale = scaleValue(layerTop, layerLeft, layerH, layerW);
+    
   layer.velocity({
-    top: layerTop - layerRadius,
-    left: layerLeft - layerRadius,
-    scale: scale,
+    top: layerTop - layer.height() / 2,
+    left: layerLeft - layer.width() / 2,
+    scaleY: scale[0],
+    scaleX: scale[1]
   }, 0);
 }
 
@@ -174,11 +181,11 @@ function closeModal() {
   var section = $('.cd-section.modal-is-visible');
 
   section.removeClass('modal-is-visible').one(transitionEvent, function() {
-    animateLayer(section.find('.cd-modal-bg'), 1, false);
+    animateLayer(section.find('.cd-modal-bg'), 1, 1, false);
   });
 
   //if browser doesn't support transitions...
-  if (section.parents('.no-csstransitions').length > 0) animateLayer(section.find('.cd-modal-bg'), 1, false);
+  if (section.parents('.no-csstransitions').length > 0) animateLayer(section.find('.cd-modal-bg'), 1, 1, false);
 }
 
 // form
@@ -231,5 +238,5 @@ function CheckBefore() {
   });
 }
 
-// form
+// end form
 
