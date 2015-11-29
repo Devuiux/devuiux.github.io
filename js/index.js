@@ -1,3 +1,5 @@
+"use strict";
+
 Ractive.DEBUG = false;
 
 window.onhashchange = OnHashChange;
@@ -43,12 +45,11 @@ $(document).ready(function() {
       });
     });
   });
+});
 
-  var ractive = new Ractive({
-    el: '.cd-modal-content',
-    template: '#template',
-    debug: false
-  });
+var ractive = new Ractive({
+  el: '.cd-modal-content',
+  template: '#template'
 });
 
 //trigger the animation - open modal window
@@ -68,7 +69,7 @@ $(window).on('resize', function() {
 });
 
 function CustomSearch(boxName) {
-  $.get('pages/' + boxName + '.min.html').done(function(datain) {
+  $.get('pages/' + boxName + '.html').done(function(datain) {
     ractive.set('dataout', datain);
 
     if (boxName == 'contact' && $('.floating-labels').length > 0) {
