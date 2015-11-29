@@ -4,7 +4,7 @@ Ractive.DEBUG = false;
 window.onhashchange = OnHashChange;
 window.onload = OnHashChange;
 
-const box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
+var box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
 
 box1.addClass('hover').delay(300).queue(function(next) {
   $(this).removeClass('hover');
