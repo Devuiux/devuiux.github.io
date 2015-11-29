@@ -64,7 +64,7 @@ $(window).on('resize', function() {
 });
 
 function CustomSearch(boxName) {
-  $.get('pages/' + boxName + '.html').done(function(datain) {
+  $.get('pages/' + boxName + '.min.html').done(function(datain) {
     ractive.set('dataout', datain);
 
     if (boxName == 'contact' && $('.floating-labels').length > 0) {
