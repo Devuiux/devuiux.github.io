@@ -1,50 +1,54 @@
-
 Ractive.DEBUG = false;
 
 window.onhashchange = OnHashChange;
 window.onload = OnHashChange;
 
-var box1 = $('.box-1'), box2 = $('.box-2'), box3 = $('.box-3'), box4 = $('.box-4');
+$(document).ready(function() {
+  var box1 = $('.box-1'),
+    box2 = $('.box-2'),
+    box3 = $('.box-3'),
+    box4 = $('.box-4');
 
-box1.addClass('hover').delay(300).queue(function(next) {
-  $(this).removeClass('hover');
-  next();
-
-  box2.addClass('hover').delay(300).queue(function(next) {
+  box1.addClass('hover').delay(300).queue(function(next) {
     $(this).removeClass('hover');
     next();
 
-    box3.addClass('hover').delay(300).queue(function(next) {
+    box2.addClass('hover').delay(300).queue(function(next) {
       $(this).removeClass('hover');
       next();
 
-      box4.addClass('hover').delay(300).queue(function(next) {
+      box3.addClass('hover').delay(300).queue(function(next) {
         $(this).removeClass('hover');
         next();
 
-        box3.addClass('hover').delay(300).queue(function(next) {
+        box4.addClass('hover').delay(300).queue(function(next) {
           $(this).removeClass('hover');
           next();
 
-          box2.addClass('hover').delay(300).queue(function(next) {
+          box3.addClass('hover').delay(300).queue(function(next) {
             $(this).removeClass('hover');
             next();
 
-            box1.addClass('hover').delay(300).queue(function(next) {
+            box2.addClass('hover').delay(300).queue(function(next) {
               $(this).removeClass('hover');
               next();
+
+              box1.addClass('hover').delay(300).queue(function(next) {
+                $(this).removeClass('hover');
+                next();
+              });
             });
           });
         });
       });
     });
   });
-});
 
-var ractive = new Ractive({
-  el: '.cd-modal-content',
-  template: '#template',
-  debug: false
+  var ractive = new Ractive({
+    el: '.cd-modal-content',
+    template: '#template',
+    debug: false
+  });
 });
 
 //trigger the animation - open modal window
@@ -94,13 +98,13 @@ function OnHashChange() {
 
 }
 
-function WhichTransitionEvent(){
+function WhichTransitionEvent() {
   var t, el = document.createElement("fakeelement");
 
   const transitions = {
-    "transition"      : "transitionend",
-    "OTransition"     : "oTransitionEnd",
-    "MozTransition"   : "transitionend",
+    "transition": "transitionend",
+    "OTransition": "oTransitionEnd",
+    "MozTransition": "transitionend",
     "WebkitTransition": "webkitTransitionEnd"
   };
 
@@ -125,7 +129,8 @@ function OpenModal(actionBtn) {
 
 function retrieveScale(btn) {
 
-  var btnH = btn.height() / 2, btnW = btn.width() / 2,
+  var btnH = btn.height() / 2,
+    btnW = btn.width() / 2,
     top = btn.offset().top + btnH - $(window).scrollTop(),
     left = btn.offset().left + btnW,
     scale = scaleValue(top, left, btnH, btnW);
@@ -141,7 +146,7 @@ function retrieveScale(btn) {
 
 function scaleValue(topValue, leftValue, hValue, wValue) {
   var maxDistH = (topValue > $(window).height() / 2) ? topValue : ($(window).height() - topValue),
-     maxDistW = (leftValue > $(window).width() / 2) ? leftValue : ($(window).width() - leftValue);
+    maxDistW = (leftValue > $(window).width() / 2) ? leftValue : ($(window).width() - leftValue);
 
   return [Math.ceil(maxDistH / hValue), Math.ceil(maxDistW / wValue)];
 }
@@ -158,7 +163,8 @@ function animateLayer(layer, scaleValY, scaleValX, bool) {
 
 function updateLayer() {
   var layer = $('.cd-section.modal-is-visible').find('.cd-modal-bg'),
-    layerH = layer.height() / 2, layerW = layer.width() / 2,
+    layerH = layer.height() / 2,
+    layerW = layer.width() / 2,
     layerTop = layer.siblings('.box').offset().top + layerH - $(window).scrollTop(),
     layerLeft = layer.siblings('.box').offset().left + layerW,
     scale = scaleValue(layerTop, layerLeft, layerH, layerW);
@@ -197,7 +203,8 @@ function CheckRequired() {
   $('.required').each(function() {
 
     $(this).on('keyup keypress blur change', function() {
-      const name_regex = /^[a-zA-Z]+$/, email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+      const name_regex = /^[a-zA-Z]+$/,
+        email_regex = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
       var regex;
 
       if ($(this).attr("id") == "cd-name") regex = name_regex;
@@ -233,4 +240,3 @@ function CheckBefore() {
 }
 
 // end form
-
