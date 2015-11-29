@@ -6,7 +6,7 @@ window.onhashchange = OnHashChange;
 window.onload = OnHashChange;
 
 $(document).ready(function() {
-  var box1 = $('.box-1'),
+  const box1 = $('.box-1'),
     box2 = $('.box-2'),
     box3 = $('.box-3'),
     box4 = $('.box-4');
