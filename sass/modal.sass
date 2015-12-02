@@ -18,7 +18,7 @@
     height: 60px
     pointer-events: none
     background: transparent
-    +background(linear-gradient(to top,rgba($modal-bg, 1), rgba($modal-bg, 0)))
+    +background-image(linear-gradient(to top, rgba($modal-bg, 1), rgba($modal-bg, 0)))
 
   .cd-modal-content
     +size(100%)
@@ -29,7 +29,7 @@
     color: $white
 
   p
-    margin: 2em 0
+    +margin(2em 0)
 
   .modal-is-visible &
     z-index: 1

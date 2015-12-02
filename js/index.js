@@ -1,5 +1,3 @@
-"use strict";
-
 Ractive.DEBUG = false;
 
 window.onhashchange = OnHashChange;
