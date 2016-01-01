@@ -24,7 +24,7 @@ header
   text-align: center
   margin: 2em auto
   padding: 0 1em
-  max-width: 410px
+  max-width: 440px
 
 +MQ(M)
   header
@@ -53,7 +53,7 @@ ul
   background: $box-bg
   max-width: $mobile-box-width
   height: $mobile-box-height
-  +transition(all 0.3s $ease-in-out-sine 0s)
+  +transition(all .3s $ease-in-out-sine 0s)
   +font-smoothing
   cursor: pointer
 
@@ -63,6 +63,8 @@ ul
     box-shadow: $box-shadow
     border-radius: $radius
     +margin(10px auto)
+    h2
+      color: rgba(247,247,247, .8)
   
   &.to-circle
     max-width: $mobile-box-height + 60px
@@ -72,14 +74,22 @@ ul
     +margin(10px auto)
 
     h2
-      color: transparent
+      color: $modal-bg
+      text-shadow: none
+      visibility: hidden
+      opacity: 0
+      font-size: 0
   
   h2
     position: absolute
     font-family: Montserrat, sans-serif
     +padding(8px 20px)
-    color: #EA93BE
+    color: rgba(247,247,247, 1)
+    text-shadow: 1px 4px 5px #FED376, 0 0 0 #000, 1px 4px 5px #FED376
     text-transform: uppercase
+    visibility: visible
+    opacity: 1
+    +transition(color .3s $ease-in-out-sine, visibility 0s .3s, opacity 0s .3s)
     font:
       size: $mobile-box-height / 4
       weight: 700
@@ -96,7 +106,7 @@ ul
     opacity: 0
     visibility: hidden
     //+transform(translateX(-($mobile-box-height + 60px)/2) translateY(-$mobile-box-height - 18px))
-    +transition(visibility 0s 0.5s)
+    +transition(visibility 0s .5s)
     top: 4px
 
     &.is-visible
