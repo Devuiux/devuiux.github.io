@@ -13,14 +13,14 @@
 
 body
   color: $modal-bg
-  background-color: $main-bg
+  +linear-gradient(to left, #517fa4, #243949)
   
   &.overflow-hidden
     // used when modal is visible
     overflow: hidden
 
 header
-  color: #bbb
+  color: rgba(255, 255, 255, 0.85)
   text-align: center
   margin: 2em auto
   padding: 0 1em
@@ -64,7 +64,7 @@ ul
     border-radius: $radius
     +margin(10px auto)
     h2
-      color: rgba(247,247,247, .8)
+      //color: rgba(247,247,247, .8)
   
   &.to-circle
     max-width: $mobile-box-height + 60px
@@ -84,8 +84,8 @@ ul
     position: absolute
     font-family: Montserrat, sans-serif
     +padding(8px 20px)
-    color: rgba(247,247,247, 1)
-    text-shadow: 1px 4px 5px #FED376, 0 0 0 #000, 1px 4px 5px #FED376
+    color: #fff
+    //text-shadow: 1px 4px 5px #FED376, 0 0 0 #000, 1px 4px 5px #FED376
     text-transform: uppercase
     visibility: visible
     opacity: 1
