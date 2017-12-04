@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>cookie</title>
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+</head>
+
+<body>
+    <button onclick="importProducts()" type="button" name="button">importProducts</button>
+    <script type="text/javascript">
+    window.onload = RedirNonHttps();
+
+    function RedirNonHttps() {}
+    var importProducts = function() {
+
+        var someStuff = {
+            "product": {
+                "title": "cacao",
+                "body_html": "asdasdasdasd",
+                "vendor": "asdasdasd",
+                "product_type": "asdasdasd",
+                "tags": "Barnes & Noble, John's Fav, \"Big Air\""
+            }
+        }
+
+        var url = "https://1d89ddbd910a90d56d0a6fc2f86ed40b:b09dfd7450708110ab149a7c73db4ac6@amazon-curated.myshopify.com/admin/products.json";
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.send(JSON.stringify(someStuff));
+    }
+    </script>
+</body>
+
+</html>
