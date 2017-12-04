@@ -10,39 +10,48 @@
 	  crossorigin="anonymous"></script>
 </head>
 
+
 <body>
-    <button onclick="importProducts()" type="button" name="button">importProducts</button>
-    <script type="text/javascript">
-    window.onload = RedirNonHttps();
+<div id="contentHere" class="">
+  <button onclick="importProducts()" type="button" name="button">importProducts</button>
+</div>
 
-    function RedirNonHttps() {}
-    var importProducts = function() {
+<script type="text/javascript">
+window.onload = RedirNonHttps();
 
-        var someStuff = {
-            "product": {
-                "title": "cacao",
-                "body_html": "asdasdasdasd",
-                "vendor": "asdasdasd",
-                "product_type": "asdasdasd",
-                "tags": "Barnes & Noble, John's Fav, \"Big Air\""
-            }
+function RedirNonHttps() {
+}
+var importProducts = function() {
+  var data = JSON.stringify({
+    "product": {
+      "title": "dududud Custom Freestyle 151",
+      "body_html": "<strong>eeee snowboard!</strong>",
+      "vendor": "Burton",
+      "product_type": "Snowboard",
+      "images": [
+        {
+          "attachment": "R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\n"
         }
-
-		  var url = "https://Basic MWQ4OWRkYmQ5MTBhOTBkNTZkMGE2ZmMyZjg2ZWQ0MGI6YjA5ZGZkNzQ1MDcwODExMGFiMTQ5YTdjNzNkYjRhYzY=@amazon-curated.myshopify.com/admin/products.json";
-
-		  // var xhr = new XMLHttpRequest();
-		  //
-		  // xhr.open("POST", url, true);
-		  // xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-		  // xhr.setRequestHeader("Accept", "application/json");
-		  // xhr.send(JSON.stringify(someStuff));
-
-		  $.post(url, JSON.stringify(someStuff), function(result){
-		      $('#contentHere').html(result);
-		  }, );
+      ]
     }
-    </script>
+  });
+
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+
+  xhr.open("POST", "https://1d89ddbd910a90d56d0a6fc2f86ed40b:b09dfd7450708110ab149a7c73db4ac6@amazon-curated.myshopify.com/admin/products.json");
+  xhr.setRequestHeader("content-type", "application/json");
+  xhr.setRequestHeader("cache-control", "no-cache");
+  xhr.setRequestHeader("postman-token", "0d15d4fc-6c50-0f36-4f9d-59b9afff9cef");
+
+  xhr.send(data);
+}
+</script>
+
 </body>
-<!-- asasdQWE@!$@1WQDASf2#$@#@ -->
-<!-- asdaS@#E@#wdF$r23 -->
-</html>
